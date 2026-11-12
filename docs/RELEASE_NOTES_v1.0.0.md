@@ -1,4 +1,4 @@
-﻿# Copi 1.0.0 · copiloto de rally
+# Copi 1.0.0 · copiloto de rally
 
 Copi convierte una ruta o un GPX en pacenotes, las canta con voz natural y las
 navega con GPS. Funciona sin conexión y tiene pantalla propia para Android Auto.
@@ -66,7 +66,11 @@ política de privacidad están en el repositorio.
 ## SHA-256
 
 ```text
+014d185c524518709d2768121494a860886b571e8c52ee3939ea21021429d2f0  Copi-Rallye-1.0.0.aab
+05d11b15c2c1329fa1c537c18fa9db340ec9ff95c2dee103074ffedbb4e84079  Copi-1.0.0.aab
+44b18b86701ca3790c047aed77136942871d95761f220d1ac96a31515abe1589  Copi-Rallye-1.0.0-release.apk
+e91d114680799cbc432f3734741ce9045d63b9230c676e292a4cb6ebb6b162f0  Copi-1.0.0-release.apk
 7f297d792e1ccc04b5206da4d4fb596bc3dd1fe44ae492dcb61adea0d59764a9  Copi-Rallye-1.0.0.apk
 2052bdaebbcbd6e86db3e36447530c292cd535a340f3034234b6f2e7cdf866af  Copi-1.0.0.apk
-8aeb23446dbd741f4a3001b1668bc7a456aeee729d2b6337bb350761e3a1eb67  Copi-Manual-1.0.0.pdf
+5ecf066fcb9ac5ea52d91bbcdc1982de14ded379421046ae1b0c8efc5c140cac  Copi-Manual-1.0.0.pdf
 ```
