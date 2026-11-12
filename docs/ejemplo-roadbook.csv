@@ -1,0 +1,9 @@
+distancia_m,tipo,severidad,modificador,nota
+0,salida,0,,Salida del tramo
+180,izquierda,4,larga,
+340,derecha,3,cierra,
+520,horquilla izquierda,1,no cortar,
+700,recto,0,,
+860,derecha,6,abre,
+980,cresta,0,,
+1150,meta,0,,

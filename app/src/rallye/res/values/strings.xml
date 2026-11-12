@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Copi Rallye</string>
+    <string name="brand_edition" translatable="false">RALLYE EDITION</string>
+    <string name="brand_tagline" translatable="false">Arte rallye. Pacenotes. Meta.</string>
+    <string name="driver_name" translatable="false">LUIS FERNANDO</string>
+    <string name="social_handle" translatable="false">@silicio-sudo · @rsanmart</string>
+    <string name="social_url" translatable="false">https://github.com/silicio-sudo</string>
+    <bool name="show_personalization">true</bool>
+    <string name="livery_style" translatable="false">rallye</string>
+    <string name="brand_legal" translatable="false">Homenaje al arte rallye. Copi no está afiliado a Mitsubishi Motors ni a Ralliart.</string>
+</resources>

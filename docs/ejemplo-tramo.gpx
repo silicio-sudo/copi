@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Copi" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata>
+    <name>Tramo ejemplo · Mirador</name>
+  </metadata>
+  <trk>
+    <name>Tramo ejemplo · Mirador</name>
+    <trkseg>
+      <trkpt lat="40.84310" lon="-3.94870"><ele>1180</ele></trkpt>
+      <trkpt lat="40.84410" lon="-3.94865"><ele>1192</ele></trkpt>
+      <trkpt lat="40.84510" lon="-3.94845"><ele>1205</ele></trkpt>
+      <trkpt lat="40.84595" lon="-3.94790"><ele>1218</ele></trkpt>
+      <trkpt lat="40.84660" lon="-3.94700"><ele>1232</ele></trkpt>
+      <trkpt lat="40.84700" lon="-3.94590"><ele>1244</ele></trkpt>
+      <trkpt lat="40.84705" lon="-3.94470"><ele>1250</ele></trkpt>
+      <trkpt lat="40.84670" lon="-3.94360"><ele>1243</ele></trkpt>
+      <trkpt lat="40.84600" lon="-3.94280"><ele>1231</ele></trkpt>
+      <trkpt lat="40.84510" lon="-3.94220"><ele>1219</ele></trkpt>
+      <trkpt lat="40.84415" lon="-3.94150"><ele>1207</ele></trkpt>
+      <trkpt lat="40.84345" lon="-3.94055"><ele>1198</ele></trkpt>
+      <trkpt lat="40.84315" lon="-3.93945"><ele>1192</ele></trkpt>
+      <trkpt lat="40.84320" lon="-3.93830"><ele>1186</ele></trkpt>
+      <trkpt lat="40.84345" lon="-3.93730"><ele>1181</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

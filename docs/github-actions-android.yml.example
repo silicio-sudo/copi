@@ -1,0 +1,51 @@
+name: Build Copi
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Build, test y empaquetado
+        run: |
+          chmod +x gradlew
+          ./gradlew :app:assembleRallyeDebug :app:assembleStandardDebug \
+            :app:testRallyeDebugUnitTest \
+            --tests "com.silicio.copi.PacenoteGeneratorTest" \
+            --tests "com.silicio.copi.RoadbookCodecTest" \
+            --tests "com.silicio.copi.RoutePathTest" \
+            --no-daemon
+
+      - name: Subir APK Rallye
+        uses: actions/upload-artifact@v4
+        with:
+          name: copi-rallye-debug
+          path: app/build/outputs/apk/rallye/debug/*.apk
+          if-no-files-found: error
+
+      - name: Subir APK estándar
+        uses: actions/upload-artifact@v4
+        with:
+          name: copi-standard-debug
+          path: app/build/outputs/apk/standard/debug/*.apk
+          if-no-files-found: error

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Copi</string>
+    <string name="brand_edition" translatable="false">COPILOTO DE RALLY</string>
+    <string name="brand_tagline" translatable="false">Pacenotes. Tramo. Meta.</string>
+
+    <!-- Personalización: las flavors rallye/standard sobrescriben estos valores. -->
+    <string name="driver_name" translatable="false"></string>
+    <string name="social_handle" translatable="false"></string>
+    <string name="social_url" translatable="false"></string>
+    <bool name="show_personalization">false</bool>
+    <string name="livery_style" translatable="false">clean</string>
+    <string name="brand_legal" translatable="false">Copi no está afiliado a Mitsubishi Motors ni a Ralliart.</string>
+</resources>
