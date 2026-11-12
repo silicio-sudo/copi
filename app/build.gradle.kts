@@ -14,6 +14,7 @@ val keystoreProperties = Properties().apply {
     }
 }
 val hasReleaseKeystore = keystoreProperties.getProperty("storeFile") != null
+val packageOverride = providers.gradleProperty("packageOverride").orNull?.takeIf { it.isNotBlank() }
 
 android {
     namespace = "com.silicio.copi"
@@ -32,11 +33,11 @@ android {
     productFlavors {
         create("rallye") {
             dimension = "edition"
-            applicationId = "com.silicio.copi.rallye"
+            applicationId = packageOverride ?: "com.silicio.copi.rallye"
         }
         create("standard") {
             dimension = "edition"
-            applicationId = "com.silicio.copi"
+            applicationId = packageOverride ?: "com.silicio.copi"
         }
     }
 
