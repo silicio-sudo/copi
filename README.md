@@ -109,6 +109,8 @@ Instrucciones completas en **[MANUAL.md](MANUAL.md)**.
   Android Auto, formatos, solución de problemas.
 - [Android Auto: por qué no aparece y cómo probarlo](docs/ANDROID_AUTO_SIDELOAD.md) —
   restricción de fuentes de confianza, DHU, Internal App Sharing y alternativas.
+- [Publicar en Play Console (Internal App Sharing)](docs/PLAY_INTERNAL_SHARING.md) —
+  subir el AAB, testers, Play App Signing y actualizaciones.
 - [Manual en PDF](docs/Copi-Manual-1.0.0.pdf) — 23 páginas A4 con portada,
   capturas y el manual completo, listo para imprimir.
 - [Privacidad](PRIVACY.md).

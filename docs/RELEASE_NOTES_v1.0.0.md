@@ -7,8 +7,12 @@ navega con GPS. Funciona sin conexión y tiene pantalla propia para Android Auto
 
 | Archivo | Qué es |
 |---|---|
-| `Copi-Rallye-1.0.0.apk` | Edición Rallye: LUIS FERNANDO, GitHub @silicio-sudo · @rsanmart, arte rallye rojo/plata/carbono |
-| `Copi-1.0.0.apk` | Edición limpia: grafito/turquesa, sin personalización |
+| `Copi-Rallye-1.0.0.aab` | Bundle firmado para Google Play / Internal App Sharing |
+| `Copi-1.0.0.aab` | Bundle de la edición limpia |
+| `Copi-Rallye-1.0.0-release.apk` | APK release firmado, para ADB/DHU |
+| `Copi-1.0.0-release.apk` | APK release de la edición limpia |
+| `Copi-Rallye-1.0.0.apk` | APK debug de Rallye, para móvil/DHU |
+| `Copi-1.0.0.apk` | APK debug de la edición limpia |
 | `Copi-Manual-1.0.0.pdf` | Manual completo en A4, 23 páginas |
 
 Los APK son **debug**, ya firmados con la clave de depuración de Android. Sirven

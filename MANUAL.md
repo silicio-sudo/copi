@@ -480,6 +480,9 @@ de Play**, no sin ninguna firma.
 Guía paso a paso y alternativas:
 [docs/ANDROID_AUTO_SIDELOAD.md](docs/ANDROID_AUTO_SIDELOAD.md).
 
+Para subir el AAB a Play:
+[docs/PLAY_INTERNAL_SHARING.md](docs/PLAY_INTERNAL_SHARING.md).
+
 ### 9.3 Desktop Head Unit (DHU)
 
 El DHU permite probar Android Auto sin coche:

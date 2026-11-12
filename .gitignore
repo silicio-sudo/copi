@@ -16,3 +16,5 @@ keystore.properties
 /app/release/
 dist/
 docs/pdf/
+keystore/
+keystore.properties
