@@ -11,9 +11,11 @@ navega con GPS. Funciona sin conexión y tiene pantalla propia para Android Auto
 | `Copi-1.0.0.apk` | Edición limpia: grafito/turquesa, sin personalización |
 | `Copi-Manual-1.0.0.pdf` | Manual completo en A4, 23 páginas |
 
-Los APK son **debug**, ya firmados con la clave de depuración de Android. No
-necesitan Google Play ni firma release. Android no instala APK sin firmar; el
-“sin firmar” de Android Auto significa “sin la firma/aprobación de Play”.
+Los APK son **debug**, ya firmados con la clave de depuración de Android. Sirven
+para instalar en el móvil y probar en el **DHU**. Para que Copi aparezca en la
+pantalla de un coche real, Android Auto exige una instalación desde Google Play
+(Internal App Sharing o Internal Test Track); “Fuentes desconocidas” no se
+aplica a la Car App Library.
 
 ## Instalar
 
