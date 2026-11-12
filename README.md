@@ -90,16 +90,16 @@ Cópialo a `.github/workflows/android.yml` si tu token de GitHub tiene el scope
 
 La app implementa la **Android for Cars App Library** con categoría
 `NAVIGATION`, `MapWithContentTemplate`, superficie de mapa propia, controles y
-`NavigationManager`. Para probarla en un coche o en el DHU hay que activar el
-modo desarrollador de Android Auto y permitir fuentes desconocidas.
+`NavigationManager`.
 
-> **Aviso honesto:** para publicar en Google Play como app de navegación hace
-> falta la aprobación de Google y una allowlist de hosts. Un APK sideloaded
-> funciona en modo desarrollador/DHU, pero no se puede garantizar que aparezca
-> en todos los coches de producción sin esa aprobación. Copi no incluye todavía
-> un módulo para Android Automotive OS (AAOS).
+> **Aviso importante:** Android Auto **no muestra apps de navegación instaladas
+> por ADB/Fuentes desconocidas**. Google exige que las apps de la Car App Library
+> vengan de Google Play (Internal App Sharing, Internal Test Track o producción).
+> El APK sirve para el móvil y para el DHU; para el coche real hay que usar una
+> fuente de confianza. Copi no incluye todavía un módulo para Android Automotive
+> OS (AAOS).
 
-Guía específica para tu coche: **[Android Auto sin Play ni firma release](docs/ANDROID_AUTO_SIDELOAD.md)**.
+Guía específica y alternativas: **[Android Auto: por qué no aparece](docs/ANDROID_AUTO_SIDELOAD.md)**.
 
 Instrucciones completas en **[MANUAL.md](MANUAL.md)**.
 
@@ -107,8 +107,8 @@ Instrucciones completas en **[MANUAL.md](MANUAL.md)**.
 
 - [Manual de uso y configuración](MANUAL.md) — instalación, voz, offline/online,
   Android Auto, formatos, solución de problemas.
-- [Android Auto sin Play ni firma release](docs/ANDROID_AUTO_SIDELOAD.md) —
-  sideload, fuentes desconocidas, DHU y solución de problemas.
+- [Android Auto: por qué no aparece y cómo probarlo](docs/ANDROID_AUTO_SIDELOAD.md) —
+  restricción de fuentes de confianza, DHU, Internal App Sharing y alternativas.
 - [Manual en PDF](docs/Copi-Manual-1.0.0.pdf) — 23 páginas A4 con portada,
   capturas y el manual completo, listo para imprimir.
 - [Privacidad](PRIVACY.md).

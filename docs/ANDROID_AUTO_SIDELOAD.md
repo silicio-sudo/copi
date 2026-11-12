@@ -1,138 +1,28 @@
-# Copi en Android Auto sin Play y sin firma de release
+# Copi en Android Auto: por qué no aparece y cómo probarlo
 
-Guía rápida para usar Copi en tu pantalla de Android Auto con un APK sideloaded.
-No hace falta cuenta de desarrollador, Google Play ni un keystore de release.
+**Actualizado:** 12 de noviembre de 2026
 
-> **Importante:** Android **no instala APKs sin firmar**. “Sin firmar” aquí
-> significa **sin la firma de Google Play**: el APK debug ya está firmado con la
-> clave de depuración que Android genera en tu equipo. Es instalable y válido
-> para sideload/Android Auto en modo desarrollador.
+## Resumen
 
-## 1. Instala el APK en el móvil
+Copi usa la **Android for Cars App Library** (categoría Navegación). Google
+restringe estas apps a **fuentes de confianza** (Google Play, Internal App
+Sharing o Internal Test Track). La opción **“Fuentes desconocidas”** de Android
+Auto **no se aplica** a apps de la Car App Library.
 
-```powershell
-adb install -r "C:\Users\NEO\copi\dist\Copi-Rallye-1.0.0.apk"
-```
+Por eso Copi **no aparece en el lanzador de Android Auto** al instalar el APK
+por ADB, ni en el ASX oficial ni en una pantalla genérica. No es un problema del
+APK ni de la pantalla.
 
-o copia el APK al móvil y ábrelo permitiendo “Instalar apps desconocidas” para
-el explorador de archivos.
+> Documentación oficial: “This setting applies to media, messaging notifications,
+> and parked apps but doesn't apply to apps built using the Android for Cars App
+> Library.”
+> https://developer.android.com/training/cars/testing#unknown-sources
 
-Comprueba que está instalado en el **perfil actual** del móvil:
+## Qué sí funciona
 
-```powershell
-adb shell pm list packages | findstr copi
-```
+### 1. Desktop Head Unit (DHU) — probar la app sin coche
 
-Debe aparecer:
-
-```text
-package:com.silicio.copi.rallye
-package:com.silicio.copi
-```
-
-La edición Rallye y la estándar pueden convivir. Para Android Auto elige una.
-
-## 2. Activa el modo desarrollador de Android Auto
-
-1. Abre la app **Android Auto** en el móvil.
-2. Entra en **Ajustes**.
-3. Baja hasta **Versión** (o “Versión y licencia”).
-4. Toca **10 veces** la versión hasta que aparezca “Modo desarrollador activado”.
-5. Vuelve a Ajustes → menú de tres puntos → **Ajustes de desarrollador**.
-6. Activa **Fuentes desconocidas** / **Unknown sources**.
-7. Si aparece, activa también **Añadir coches nuevos a Android Auto**.
-
-> En algunas versiones el menú está en Ajustes → **Ajustes de desarrollador**
-> directamente, o en el menú de tres puntos de la pantalla principal.
-
-## 3. Conecta al coche
-
-### 3.1 Primer emparejamiento
-
-1. Desbloquea el móvil.
-2. Activa **Bluetooth** y **Wi-Fi** en el móvil.
-3. Enciende el coche/pantalla y abre su modo **Android Auto**.
-4. Acepta el emparejamiento Bluetooth y los permisos que pida la pantalla.
-5. En el ASX, haz la **primera conexión por USB** (cable de datos). Así el
-   coche registra el teléfono y Copi; después podrás usar el modo inalámbrico.
-6. En la genérica, sigue el asistente de la pantalla (Bluetooth + Wi-Fi). Si
-   tiene USB, úsalo también para el primer registro.
-7. Abre el cajón de aplicaciones del coche y busca **Copi Rallye** o **Copi**.
-
-### 3.2 Inalámbrico: Wi-Fi + Bluetooth
-
-Android Auto inalámbrico usa Bluetooth para el emparejamiento y una red Wi-Fi
-creada por el coche para los datos. En el móvil:
-
-- Mantén **Bluetooth** y **Wi-Fi** activos; no hace falta datos móviles para el
-  GPS, el roadbook ni la voz local.
-- Desactiva el ahorro de batería agresivo para **Android Auto** y **Copi**.
-- Mantén el móvil desbloqueado y cerca de la pantalla; el primer inicio puede
-  tardar unos segundos.
-- Usa preferentemente **Wi-Fi de 5 GHz** si la pantalla lo permite.
-- Para un tramo largo, conecta el móvil al cargador: GPS + AA inalámbrico +
-  voz consumen batería.
-
-Si el coche no ofrece Wi-Fi propio, algunas pantallas genéricas usan un
-**dongle USB** de Android Auto inalámbrico; en ese caso el procedimiento es el
-del dongle, no el de la pantalla.
-
-### 3.3 Añadir Copi al lanzador de Android Auto
-
-En el móvil, Android Auto → Ajustes → **Personalizar lanzador** (Customize
-launcher). Debe aparecer **Copi Rallye** o **Copi**; actívalo. Si no aparece,
-es que Android Auto no está aceptando la app sideloaded: revisa **Fuentes
-desconocidas**, reinstala el APK y vuelve a conectar.
-
-### 3.4 ASX oficial frente a pantalla genérica
-
-- **ASX oficial**: usa el Android Auto de Google. Si Copi aparece por cable pero
-  no por Wi-Fi, borra caché de Android Auto, reempareja y comprueba que el ASX
-  tiene activada la proyección inalámbrica. Para rally, el cable es más estable
-  y carga el móvil.
-- **Genérica**: muchas usan Zlink/CarPlay/Android Auto propietario. Copi debería
-  aparecer si el host respeta las apps sideloaded; algunos firmwares solo
-  muestran apps aprobadas. Prueba cable/USB primero, actualiza el firmware y
-  revisa el lanzador. Si solo aparece en el móvil/DHU y no en la genérica, es
-  una limitación del host, no del APK.
-
-## 4. Qué deberías ver
-
-- Si el host soporta **Car API 7 o superior**: HUD de Copi con velocidad, nota,
-  distancia, cronómetro y lista de próximas notas.
-- Si el host es más antiguo: **modo lista** con las próximas notas y los botones
-  Iniciar/Pausa y Siguiente. La app sigue funcionando; solo falta el HUD.
-- La app del móvil y la del coche comparten el mismo motor: puedes iniciar el
-  tramo desde el coche o desde el móvil.
-
-`minCarApiLevel` se ha bajado a **1** precisamente para que aparezca en más
-hosts. `MapWithContentTemplate` se usa solo cuando el host soporta API 7+.
-
-## 5. Si Copi no aparece
-
-Prueba en este orden:
-
-1. **Reinicia Android Auto**: Ajustes → Forzar detención → borrar caché.
-2. Comprueba que **Fuentes desconocidas** sigue activo.
-3. Instala el APK en el móvil, no en una tarjeta o perfil de trabajo.
-4. Usa un cable de datos y otro puerto USB.
-5. Desactiva la optimización de batería para **Android Auto** y **Copi**.
-6. Reinicia el móvil y la pantalla del coche.
-7. Verifica el manifiesto:
-
-```powershell
-aapt dump xmltree app\build\outputs\apk\rallye\debug\app-rallye-debug.apk AndroidManifest.xml | findstr /i "CarAppService minCarApiLevel"
-```
-
-Debe aparecer `CopiCarAppService`, la categoría `androidx.car.app.category.NAVIGATION`
-y `minCarApiLevel=1`.
-8. Prueba el **Desktop Head Unit (DHU)** para saber si el problema es del coche
-   o de la app (ver más abajo).
-9. Si tu coche tiene **Google integrado (Android Automotive OS)**, no es Android
-   Auto proyectado: esta versión no incluye módulo AAOS y no aparecerá. Habría
-   que crear un módulo `app-automotive`.
-
-## 6. DHU: probar sin coche
+El DHU sí permite ejecutar la app instalada por ADB para desarrollo.
 
 1. SDK Manager → **Android Auto Desktop Head Unit Emulator**.
 2. Android Auto del móvil → Ajustes de desarrollador → **Iniciar servidor de
@@ -151,45 +41,84 @@ adb forward tcp:5277 tcp:5277
 
 5. En el DHU abre el cajón de apps y elige Copi.
 
-## 7. ¿Y la firma?
+Esto confirma que el APK y la integración funcionan, pero **no lo hace aparecer
+en el coche real**.
 
-| Concepto | ¿Necesario? |
-|---|---|
-| Firma debug de Android | **Sí**, ya incluida; permite instalar por ADB. |
-| Firma release propia | No para sideload; sí para publicar/actualizar una release. |
-| Aprobación de Google Play | No para modo desarrollador/DHU; sí para distribución pública como app de navegación. |
-| Allowlist de hosts | No para sideload (Copi usa `ALLOW_ALL_HOSTS_VALIDATOR`); sí para producción. |
+### 2. Google Play Internal App Sharing — la vía recomendada
 
-El keystore debug suele estar en:
+Es la forma oficial de instalar una app de coche sin publicarla ni pasar una
+revisión pública. La app se instala desde Google Play, así que Android Auto la
+considera de confianza.
 
-```text
-%USERPROFILE%\.android\debug.keystore
-```
+Requisitos:
 
-Android lo crea automáticamente al compilar/instalar. No lo borres si quieres
-que las actualizaciones debug se instalen encima sin desinstalar.
+- Cuenta de **Google Play Console** (alta única de 25 USD).
+- AAB o APK **release firmado** (no debug).
+- Un enlace de testers de Internal App Sharing.
 
-## 8. Límites reales
+Pasos generales:
 
-- Un APK sideloaded funciona en **modo desarrollador/Fuentes desconocidas**.
-- No se puede garantizar que aparezca en **todos** los coches de producción sin
-  la aprobación de Google para la categoría Navegación.
-- Algunos fabricantes bloquean fuentes desconocidas o requieren el móvil
-  desbloqueado; es una restricción del coche/host, no de Copi.
-- La versión 1.0 es Android Auto **proyectado**; no AAOS.
+1. Crea la app en Play Console con el paquete `com.silicio.copi.rallye`.
+2. Sube un **AAB release firmado** a **Internal app sharing**.
+3. Añade tu cuenta de Google como tester.
+4. Abre el enlace de opt-in en el móvil e instala Copi desde Play.
+5. Conecta Android Auto; Copi aparecerá en el lanzador.
+6. Opcional: crea un **Internal test track** para actualizaciones.
 
-## 9. Comandos útiles
+Ventajas: sin revisión pública, sin listado público, sin esperar aprobación de la
+categoría Navegación. Para publicar en producción sí hará falta la aprobación de
+Google para Navegación.
 
-```powershell
-# Reinstalar conservando datos
-adb install -r "C:\Users\NEO\copi\dist\Copi-Rallye-1.0.0.apk"
+### 3. Internal Test Track / producción
 
-# Ver logs de Android Auto / Copi
-adb logcat | findstr /i "car.app copi"
+Si ya tienes Play Console, puedes subir el AAB a un canal de pruebas interno y
+distribuirlo a testers. La app se instala desde Play y Android Auto la acepta.
+Para que sea pública como app de navegación, Google debe aprobar la categoría.
 
-# Desinstalar
-adb uninstall com.silicio.copi.rallye
-```
+### 4. Usar Copi en el móvil, no en la pantalla del coche
 
-Si algo falla, envía el resultado de `adb logcat` filtrando por `CarAppService`,
-`Copi` o `NavigationManager`.
+Copi funciona completo en el móvil: GPS, roadbook, voz local y modo demo. Si no
+quieres pasar por Play Console, puedes usar el móvil en un soporte. Es la opción
+inmediata, sin depender de Android Auto.
+
+## Lo que no funciona
+
+- Instalar el APK por ADB y activar “Fuentes desconocidas”: Android Auto no
+  mostrará una app de Car App Library.
+- Instalar el APK en la pantalla genérica si esta solo proyecta Android Auto: la
+  pantalla no ejecuta el APK; lo ejecuta el móvil.
+- Firmar con la clave debug y esperar que Play lo acepte: Play requiere una
+  firma release para Internal App Sharing.
+- Usar herramientas de terceros que modifican Android Auto: pueden violar los
+  términos de Google, romper la seguridad y no garantizan nada. No se
+  recomiendan.
+
+## Sobre “sin firmar”
+
+Android no instala APKs sin firmar. El APK debug ya está firmado con la clave de
+depuración y sirve para ADB/DHU. Para Play Internal App Sharing hace falta una
+**firma release**:
+
+- crea un keystore de subida;
+- configura `signingConfigs` en `app/build.gradle.kts`;
+- genera `bundleRallyeRelease`;
+- guarda el keystore y las contraseñas fuera del repositorio.
+
+## Si quieres que lo prepare
+
+Puedo dejar listo:
+
+- un **AAB release firmado** de Copi Rallye y de Copi;
+- un keystore local con contraseña aleatoria;
+- una guía exacta de Play Console para Internal App Sharing;
+- el APK release firmado para instalar por ADB/DHU.
+
+Solo hace falta tener o crear la cuenta de Play Console y decidir si el
+repositorio sigue siendo público.
+
+## Diferencias ASX / pantalla genérica
+
+No cambian la causa: las dos son pantallas de **Android Auto proyectado**. La
+restricción de fuentes de confianza se aplica igual. Si en el futuro alguna
+pantalla ejecuta Android completo (AAOS o Android normal), se podría instalar
+Copi directamente en ella, pero eso es otro tipo de integración.

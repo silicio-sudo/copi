@@ -456,22 +456,28 @@ del trazado, con notas, salida, meta y tu posición. Eso mantiene la app ligera 
    **Fuentes desconocidas** (Unknown sources).
 5. Conecta el móvil al coche por USB (mejor cable de datos) o por wifi si tu
    coche lo soporta.
-6. En el lanzador de apps del coche aparecerá **Copi Rallye** o **Copi**.
+
+> **Ojo:** “Fuentes desconocidas” sirve para apps de media, mensajería y
+> aparcado. **No se aplica a apps de la Car App Library** como Copi. En un coche
+> real, Copi debe estar instalada desde Google Play (Internal App Sharing,
+> Internal Test Track o producción). Para desarrollo se usa el DHU.
 
 ### 9.2.1 Sin Play y sin firma de release
 
 Android no instala APKs sin firmar. El APK **debug** ya está firmado con la
 clave de depuración (`~/.android/debug.keystore`), así que se instala por ADB o
-desde el móvil sin keystore de release y sin cuenta de Google Play. “Sin firmar”
-significa aquí **sin la firma de Play**, no sin ninguna firma.
+desde el móvil sin keystore release. “Sin firmar” significa aquí **sin la firma
+de Play**, no sin ninguna firma.
 
-- No necesitas aprobación de Google para probar en modo desarrollador/DHU.
-- No necesitas cambiar la allowlist: Copi usa `ALLOW_ALL_HOSTS_VALIDATOR` en
-  esta versión.
-- Para publicación en Play sí haría falta firma release + aprobación de la
-  categoría Navegación.
+- El APK debug sirve para probar en el **móvil** y en el **DHU**.
+- En el coche real **no aparece solo por ADB/Fuentes desconocidas**: Google
+  exige que las apps de la Car App Library vengan de una fuente de confianza.
+- La vía oficial sin publicación pública es **Google Play Internal App
+  Sharing** (requiere cuenta de Play Console y un AAB/APK **release firmado**).
+- Para producción pública hace falta, además, la aprobación de la categoría
+  Navegación.
 
-Guía paso a paso y solución de problemas:
+Guía paso a paso y alternativas:
 [docs/ANDROID_AUTO_SIDELOAD.md](docs/ANDROID_AUTO_SIDELOAD.md).
 
 ### 9.3 Desktop Head Unit (DHU)
@@ -511,23 +517,22 @@ Copi implementa la **Android for Cars App Library** oficial:
 - `minCarApiLevel=1`; `MapWithContentTemplate` se usa si el host soporta Car API
   7 o superior y, si no, se cae a `ListTemplate` (modo lista).
 
-Para que una app de navegación se distribuya en Google Play y aparezca en
-coches de producción, Google debe aprobar la categoría y allowlistear el
-paquete. Es un proceso de revisión con requisitos de calidad (NF-2, NF-6, etc.).
-Un APK sideloaded puede funcionar en modo desarrollador/DHU, pero **no se puede
-garantizar el 100 % de compatibilidad en todos los coches de producción sin esa
-aprobación**.
+Para que una app de navegación aparezca en un coche real, Android Auto exige
+que esté instalada desde una **fuente de confianza**: Google Play, Internal App
+Sharing o Internal Test Track. La opción “Fuentes desconocidas” **no se aplica**
+a la Car App Library. Para publicar en Google Play hace falta, además, aprobar
+la categoría Navegación y la allowlist de hosts.
 
-Además, `HostValidator.ALLOW_ALL_HOSTS_VALIDATOR` está pensado para desarrollo.
-Para publicar hay que usar `HostValidator.Builder` con la allowlist de hosts y
-firmar la app. La versión 1.0 no incluye módulo Android Automotive OS (AAOS),
-solo Android Auto proyectado.
+`HostValidator.ALLOW_ALL_HOSTS_VALIDATOR` está pensado para desarrollo/DHU. Para
+publicar hay que usar `HostValidator.Builder` con la allowlist de hosts y firmar
+la app. La versión 1.0 no incluye módulo Android Automotive OS (AAOS), solo
+Android Auto proyectado.
 
 ### 9.5 Problemas típicos en Android Auto
 
 | Síntoma | Solución |
 |---|---|
-| La app no aparece | Activa Fuentes desconocidas; usa cable de datos; reinicia Android Auto; comprueba `minCarApiLevel` y que esté instalada en el perfil actual. |
+| La app no aparece | Es lo esperado con un APK sideloaded: las apps Car App Library no usan Fuentes desconocidas. Instálala desde Google Play Internal App Sharing/Internal Test Track o pruébala en el DHU. |
 | Solo veo una lista, sin HUD | El host no soporta Car API 7; es el modo lista de compatibilidad. |
 | HUD en negro | La superficie aún no está lista; espera, cambia de app y vuelve. Reporta el coche/host. |
 | No hay sonido | Sube el volumen multimedia; revisa que la voz no esté silenciada; prueba la voz en el móvil. |
@@ -699,11 +704,14 @@ Más detalle: [PRIVACY.md](PRIVACY.md).
 
 ### Android Auto no muestra Copi
 
-- Activa modo desarrollador y Fuentes desconocidas.
-- Usa un cable de datos; prueba otro puerto.
-- Comprueba que la app está instalada en el **móvil** (no solo en el coche).
-- Recuerda la limitación de aprobación de Google para coches de producción.
-- Prueba el DHU para aislar el problema del coche.
+- Es lo esperado si instalaste el APK por ADB: las apps de la Car App Library no
+  se habilitan con “Fuentes desconocidas”.
+- Para el coche real, instala desde **Google Play Internal App Sharing** o un
+  **Internal Test Track** (requiere cuenta de Play Console y AAB firmado).
+- Para desarrollo, usa el **DHU** con el APK debug.
+- Comprueba que la app está instalada en el **móvil** y en el perfil actual.
+- Recuerda que la publicación pública como Navegación requiere aprobación de
+  Google.
 
 ### ¿Puedo usar las dos ediciones?
 
