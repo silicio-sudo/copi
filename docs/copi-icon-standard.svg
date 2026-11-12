@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#11151A"/>
+      <stop offset="0.55" stop-color="#0B0D10"/>
+      <stop offset="1" stop-color="#060709"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0F766E"/>
+      <stop offset="0.45" stop-color="#2DD4BF"/>
+      <stop offset="1" stop-color="#7CF7E6"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.5" stop-color="#C7CCD1"/>
+      <stop offset="1" stop-color="#77808A"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="16" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0V64" fill="none" stroke="#FFFFFF" stroke-opacity="0.035" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+  <rect width="1024" height="1024" fill="url(#grid)"/>
+
+  <g transform="rotate(-20 740 250)">
+    <rect x="650" y="-260" width="170" height="1600" fill="url(#teal)"/>
+    <rect x="842" y="-260" width="30" height="1600" fill="url(#silver)" opacity="0.95"/>
+    <rect x="892" y="-260" width="10" height="1600" fill="#FFFFFF" opacity="0.22"/>
+  </g>
+
+  <text x="735" y="830" font-family="Arial Black, Arial, sans-serif" font-style="italic"
+        font-weight="900" font-size="520" fill="#FFFFFF" opacity="0.04">7</text>
+
+  <g filter="url(#glow)">
+    <text x="220" y="700" font-family="Arial Black, Arial, sans-serif" font-style="italic"
+          font-weight="900" font-size="520" fill="#FFFFFF" letter-spacing="-18">C</text>
+  </g>
+
+  <rect x="226" y="760" width="128" height="10" rx="5" fill="#2DD4BF"/>
+  <text x="226" y="855" font-family="Arial Black, Arial, sans-serif" font-style="italic"
+        font-weight="900" font-size="86" fill="#FFFFFF" letter-spacing="8">COPI</text>
+  <text x="230" y="900" font-family="Arial, sans-serif" font-weight="700"
+        font-size="23" fill="#2DD4BF" letter-spacing="9">COPILOTO DE RALLY</text>
+</svg>
