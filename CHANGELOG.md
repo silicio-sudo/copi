@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.1 — 2026-11-12
+
+- `compileSdk` y `targetSdk` actualizados a **36** para cumplir el requisito de
+  Google Play.
+- `versionCode` 2 y `versionName` 1.0.1.
+- Sin cambios funcionales.
+- AAB firmado con la misma upload key.
+
 ## 1.0.0 — 2026-11-12
 
 Primera versión funcional de Copi.
