@@ -21,6 +21,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.material.icons.filled.Code
+import androidx.compose.material.icons.filled.DirectionsCar
 import androidx.compose.material.icons.filled.Flag
 import androidx.compose.material.icons.filled.Navigation
 import androidx.compose.material.icons.filled.PlayArrow
@@ -130,7 +131,7 @@ fun BrandHeader(state: RallyState) {
     val online = isOnline(LocalContext.current)
     Column(Modifier.fillMaxWidth()) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            WordmarkMark()
+            BrandEmblem()
             Spacer(Modifier.width(10.dp))
             Column {
                 Text(
@@ -202,6 +203,52 @@ fun BrandHeader(state: RallyState) {
                     letterSpacing = 1.6.sp
                 )
             }
+        }
+    }
+}
+
+@Composable
+fun BrandEmblem(size: Int = 38) {
+    val brand = LocalBrand.current
+    val shape = RoundedCornerShape((size * 0.22f).dp)
+    Box(
+        Modifier
+            .size(size.dp)
+            .clip(shape)
+            .background(brand.surfaceAlt)
+            .border(1.dp, brand.line, shape),
+        contentAlignment = Alignment.Center
+    ) {
+        if (brand.livery == LiveryStyle.RALLYE) {
+            Canvas(Modifier.fillMaxSize().padding((size * 0.14f).dp)) {
+                val w = this.size.width
+                val h = this.size.height
+                fun diamond(cx: Float, cy: Float, rx: Float, ry: Float) {
+                    val path = androidx.compose.ui.graphics.Path().apply {
+                        moveTo(cx, cy - ry)
+                        lineTo(cx + rx, cy)
+                        lineTo(cx, cy + ry)
+                        lineTo(cx - rx, cy)
+                        close()
+                    }
+                    drawPath(path, color = brand.primary)
+                }
+                diamond(w * 0.5f, h * 0.27f, w * 0.19f, h * 0.22f)
+                diamond(w * 0.28f, h * 0.68f, w * 0.19f, h * 0.22f)
+                diamond(w * 0.72f, h * 0.68f, w * 0.19f, h * 0.22f)
+                drawCircle(
+                    color = brand.accent.copy(alpha = 0.8f),
+                    radius = w * 0.035f,
+                    center = Offset(w * 0.5f, h * 0.5f)
+                )
+            }
+        } else {
+            Icon(
+                Icons.Filled.DirectionsCar,
+                contentDescription = "Copi",
+                tint = brand.primary,
+                modifier = Modifier.size((size * 0.56f).dp)
+            )
         }
     }
 }

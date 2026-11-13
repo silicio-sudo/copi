@@ -41,6 +41,7 @@ import com.silicio.copi.ui.LocalBrand
 import com.silicio.copi.ui.components.BrandFooter
 import com.silicio.copi.ui.components.CopiCard
 import com.silicio.copi.ui.components.LiveryBackdrop
+import com.silicio.copi.ui.components.BrandEmblem
 import com.silicio.copi.ui.components.SectionTitle
 import com.silicio.copi.ui.components.StatusPill
 import com.silicio.copi.ui.components.WordmarkMark
@@ -75,7 +76,7 @@ fun AboutScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
             item {
                 CopiCard(highlight = true) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        WordmarkMark(size = 64)
+                        BrandEmblem(size = 64)
                         Spacer(Modifier.height(10.dp))
                         Text(
                             brand.name.uppercase(),

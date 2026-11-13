@@ -46,6 +46,8 @@ distintos.
   internet. La nube solo añade planificación y voces más naturales.
 - **Android Auto**: HUD de carrera, siguiente nota, lista de próximas notas,
   controles y metadatos de navegación (Car App Library, categoría Navegación).
+- **Mapa real**: pestaña Mapa con OpenStreetMap, ruta, posición y seguimiento.
+- **Emblemas de edición**: tres rombos en Rallye y coche en la edición limpia.
 - **Modo demo**: simula un tramo a ~60 km/h para probar la app y Android Auto sin
   coche.
 

@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Explore
 import androidx.compose.material.icons.filled.Map
+import androidx.compose.material.icons.filled.Navigation
 import androidx.compose.material.icons.filled.Speed
 import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material3.Icon
@@ -33,6 +34,7 @@ import com.silicio.copi.nav.Copi
 import com.silicio.copi.ui.screens.AboutScreen
 import com.silicio.copi.ui.screens.DashboardScreen
 import com.silicio.copi.ui.screens.HelpScreen
+import com.silicio.copi.ui.screens.MapScreen
 import com.silicio.copi.ui.screens.PlannerScreen
 import com.silicio.copi.ui.screens.RoadbooksScreen
 import com.silicio.copi.ui.screens.SettingsScreen
@@ -41,6 +43,7 @@ import kotlinx.coroutines.launch
 private enum class Tab(val label: String, val icon: ImageVector) {
     INICIO("Inicio", Icons.Filled.Speed),
     TRAMO("Tramo", Icons.Filled.Map),
+    MAPA("Mapa", Icons.Filled.Navigation),
     RUTA("Ruta", Icons.Filled.Explore),
     AJUSTES("Ajustes", Icons.Filled.Tune)
 }
@@ -141,6 +144,11 @@ fun CopiRoot(
                         state = state,
                         importing = importing,
                         onNavigateHome = { tab = Tab.INICIO }
+                    )
+                    Tab.MAPA -> MapScreen(
+                        state = state,
+                        settings = settings,
+                        onOpenRoadbooks = { tab = Tab.TRAMO }
                     )
                     Tab.RUTA -> PlannerScreen(
                         settings = settings,

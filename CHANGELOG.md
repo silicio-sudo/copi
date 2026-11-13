@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.0 — 2026-11-13
+
+- Mapa real con OpenStreetMap y caché local de teselas.
+- Nueva pestaña **Mapa** con ruta, posición actual y seguimiento.
+- Emblema de tres rombos en la edición **Copi Rallye**.
+- Icono de coche en la edición **Copi** limpia.
+- `versionCode` 3, `versionName` 1.1.0.
+- Sigue targetSdk 36.
+
 ## 1.0.1 — 2026-11-12
 
 - `compileSdk` y `targetSdk` actualizados a **36** para cumplir el requisito de
