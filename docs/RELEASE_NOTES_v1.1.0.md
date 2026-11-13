@@ -16,19 +16,24 @@ Esta versión añade el mapa real y la identidad visual de cada edición.
 
 ## AAB para Play
 
-Edición limpia:
+Edición limpia (paquete registrado en Play Console):
 
 ```text
-Copi-1.1.0-rallye1.aab
+Copi-1.1.0-rallye.aab
 ```
 
-Paquete: `com.silicio.copi.rallye1`
+Paquete: `com.silicio.copi.rallye`
 
-Edición Rallye:
+Edición Rallye (solo uso privado y GitHub):
 
 ```text
-Copi-Rallye-1.1.0-rallye1.aab
+Copi-Rallye-1.1.0-edicion.aab
 ```
+
+Paquete: `com.silicio.copi.rallye.edicion`
+
+> No subas a Play el AAB de la edición Rallye: Play solo acepta
+> `com.silicio.copi.rallye`.
 
 ## Notas
 

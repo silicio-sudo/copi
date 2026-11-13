@@ -11,7 +11,7 @@ pantalla propia para **Android Auto**.
 
 | | **Copi Rallye** | **Copi** |
 |---|---|---|
-| Paquete | `com.silicio.copi.rallye` | `com.silicio.copi` |
+| Paquete | `com.silicio.copi.rallye.edicion` | `com.silicio.copi.rallye` |
 | Diseño | Arte rallye: carbono, rojo y plata | Grafito y turquesa |
 | Personalización | **LUIS FERNANDO** + GitHub **@silicio-sudo · @rsanmart** | Limpia, sin datos personales |
 | APK debug | `app-rallye-debug.apk` | `app-standard-debug.apk` |

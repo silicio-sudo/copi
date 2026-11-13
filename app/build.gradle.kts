@@ -31,13 +31,16 @@ android {
 
     flavorDimensions += "edition"
     productFlavors {
+        // Edición personalizada: solo para uso privado y GitHub.
         create("rallye") {
             dimension = "edition"
-            applicationId = packageOverride ?: "com.silicio.copi.rallye"
+            applicationId = packageOverride ?: "com.silicio.copi.rallye.edicion"
         }
+        // Edición limpia: es la publicada en Google Play, con el paquete
+        // registrado en Play Console.
         create("standard") {
             dimension = "edition"
-            applicationId = packageOverride ?: "com.silicio.copi"
+            applicationId = packageOverride ?: "com.silicio.copi.rallye"
         }
     }
 
